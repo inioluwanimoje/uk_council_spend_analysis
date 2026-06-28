@@ -1,8 +1,8 @@
 # Leeds City Council Spend Analysis
 
-A SQL analytics project using real, publicly available spend data from Leeds City Council, demonstrating audit-style data quality checks, vendor concentration analysis, trend monitoring, and anomaly detection — the kind of analysis a finance or risk team would use to scope a review.
+A SQL analytics project using real, publicly available spend data from **Leeds City Council**, demonstrating audit-style data quality checks, vendor concentration analysis, trend monitoring, and anomaly detection — the kind of analysis a finance or risk team would use to scope a review.
 
-This project was built as part of a career transition from auditing to data analytics, applying audit techniques (completeness testing, control gap detection, risk-based sampling) directly in SQL.
+This project was built as part of a career transition from **auditing to data analytics**, applying audit techniques (completeness testing, control gap detection, risk-based sampling) directly in SQL.
 
 ---
 
@@ -31,6 +31,7 @@ A completeness check across supplier, department, amount, and payment date retur
 **2. Spend is highly fragmented across suppliers**
 Despite 9,374 unique suppliers, no single supplier dominates total spend:
 | Supplier | Total Spend | % of Total Spend |
+|---|---|---|
 | Housing Benefit | £127,297,609.26 | 6.15% |
 | Bradford Metropolitan Council | £109,490,450.65 | 4.93% |
 | West Yorkshire Combined Authority | £96,122,532.25 | 4.64% |
@@ -42,6 +43,7 @@ The top 5 suppliers together account for under 25% of total spend — low concen
 **3. Spend scales sharply through the financial year**
 Monthly totals show a clear ramp into the new financial year:
 | Month | Transactions | Total Spend |
+|---|---|---|
 | 2025-11 | 8,951 | £2,868,704.18 |
 | 2025-12 | 50,896 | £11,858,889.80 |
 | 2026-01 | 118,382 | £603,487,134.43 |
@@ -56,6 +58,7 @@ Using a CASE-based flagging system (missing supplier, refund/negative, high valu
 **5. Every department exceeded the "High" risk threshold**
 Using risk-tier bands of >£5m (High), >£1m (Medium), all 113 departments returned in the executive summary were classified as **High** risk by total spend — for example:
 | Department | Transactions | Total Spend | Flag Rate |
+|---|---|---|---|
 | Social Care | 69,757 | £463,838,800.39 | 2.0% |
 | Social Work & Social Care Services | 30,598 | £369,738,430.03 | 6.5% |
 | Finance | 1,286 | £310,359,681.36 | 10.7% |
@@ -73,7 +76,7 @@ One result stands out regardless of threshold: **Government Grants & Parish Prec
 - **No NULLs found** on department, supplier, amount, or payment date.
 - **One supplier value reads "REDACTED PERSONAL DATA"** — this is Leeds Council's own redaction of individual payees (common for safeguarding-sensitive payments like foster care or adult social care), not a data error.
 - **A handful of transactions (6 rows) appear dated September 2025**, with a small negative total spend (-£115.20) — likely backdated adjustments or refunds rather than genuine activity in that month. Excluded from headline trend commentary but retained in the underlying data.
-- The Dec 2025 → Jan 2026 spend jump (~50x) corresponds to UK local government year-end timing. Local authority financial years run to 31 March, and the final quarter (Jan–Mar) typically sees concentrated payment activity as councils clear commitments and process grant-related payments ahead of close. Leeds's 2026/27 government funding settlement was confirmed on 9 February 2026, with the council's own budget debated and voted on 25 February 2026 — both falling inside this window. This is a structural pattern across UK councils, not a data error specific to this dataset.
+- **The Dec 2025 → Jan 2026 spend jump (~50x)** corresponds to UK local government year-end timing. Local authority financial years run to 31 March, and the final quarter (Jan–Mar) typically sees concentrated payment activity as councils clear commitments and process grant-related payments ahead of close. Leeds's 2026/27 government funding settlement was confirmed on 9 February 2026, with the council's own budget debated and voted on 25 February 2026 — both falling inside this window. This is a structural pattern across UK councils, not a data error specific to this dataset.
 - **Statutory/transfer payments** (Housing Benefit, central government grants) appear in the same `supplier` field as commercial vendors — a real analysis distinguishing "payments to third-party vendors" from "statutory transfers" would need a category flag, which this raw dataset doesn't provide.
 
 ---
