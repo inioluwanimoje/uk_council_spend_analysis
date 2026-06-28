@@ -32,6 +32,7 @@ A completeness check across supplier, department, amount, and payment date retur
 Despite 9,374 unique suppliers, no single supplier dominates total spend:
 
 | Supplier | Total Spend | % of Total Spend |
+|---|---|---|
 | Housing Benefit | £127,297,609.26 | 6.15% |
 | Bradford Metropolitan Council | £109,490,450.65 | 4.93% |
 | West Yorkshire Combined Authority | £96,122,532.25 | 4.64% |
