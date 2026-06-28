@@ -32,11 +32,15 @@ A completeness check across supplier, department, amount, and payment date retur
 Despite 9,374 unique suppliers, no single supplier dominates total spend:
 
 | Supplier | Total Spend | % of Total Spend |
-|---|---|---|
+
 | Housing Benefit | £127,297,609.26 | 6.15% |
+
 | Bradford Metropolitan Council | £109,490,450.65 | 4.93% |
+
 | West Yorkshire Combined Authority | £96,122,532.25 | 4.64% |
+
 | The Secretary of State | £90,174,815.00 | 4.36% |
+
 | Foster Care – BACS | £62,702,458.20 | 3.03% |
 
 The top 5 suppliers together account for under 25% of total spend — low concentration risk at the top end, though this is partly because statutory payments (Housing Benefit, central government transfers) sit alongside genuine third-party vendors in the same field.
